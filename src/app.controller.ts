@@ -23,7 +23,7 @@ export class AppController {
         data: items,
       });
     } catch (err) {
-      throw new BadRequestException(err);
+      throw new BadRequestException('/orlenValues', err);
     }
   }
 
@@ -39,7 +39,7 @@ export class AppController {
         data: items,
       });
     } catch (err) {
-      throw new BadRequestException(err);
+      throw new BadRequestException('/marketValues', err);
     }
   }
 }
