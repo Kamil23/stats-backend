@@ -42,4 +42,20 @@ export class AppController {
       throw new BadRequestException('/marketValues', err);
     }
   }
+
+  @Get('/exchangeValues/')
+  async getExchangeValues(
+    @Query('startDate') startDate: string,
+    @Query('endDate') endDate: string,
+  ) {
+    try {
+      const items = await this.appService.getExchangeValues(startDate, endDate);
+      return new ResponseSchema(200, 'ok', {
+        count: items.length,
+        data: items,
+      });
+    } catch (err) {
+      throw new BadRequestException('/exchangeValues', err);
+    }
+  }
 }

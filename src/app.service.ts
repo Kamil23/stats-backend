@@ -25,4 +25,16 @@ export class AppService {
     );
     return response.data;
   }
+
+  async getExchangeValues(startDateTimestamp, endDateTimestamp): Promise<[]> {
+    const response = await axios.get(
+      `https://www.bankier.pl/new-charts/get-data?date_from=${startDateTimestamp}&date_to=${endDateTimestamp}&symbol=USD&intraday=false&type=area`,
+      {
+        headers: {
+          'Accept-Encoding': '*',
+        },
+      },
+    );
+    return response.data;
+  }
 }
