@@ -16,14 +16,14 @@ export class AppService {
 
   async getMarketValues(startDateTimestamp, endDateTimestamp): Promise<[]> {
     const response = await axios.get(
-      `https://notowania.pb.pl/new-charts/get-data?date_from=${startDateTimestamp}&date_to=${endDateTimestamp}&symbol=ROPA&intraday=false&type=area`,
+      `https://api.bankier.pl/quotes/public/commodities-section-chart/?symbols=brentfuture&date_from=${startDateTimestamp}&date_to=${endDateTimestamp}&intraday=false`,
       {
         headers: {
           'Accept-Encoding': '*',
         },
       },
     );
-    return response.data;
+    return response.data.data[0].data;
   }
 
   async getExchangeValues(startDateTimestamp, endDateTimestamp): Promise<[]> {
